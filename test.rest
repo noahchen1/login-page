@@ -17,7 +17,7 @@ Content-Type: application/json
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTm9haCIsImlhdCI6MTY2NzI0OTgxM30.j9gsbWTWNcl981PUBHufEvEMBSlXx6RRwHhcc_PUJos"
 }
 
-###
+###start from here
 POST http://localhost:4000/register
 Content-Type: application/json
 
@@ -25,3 +25,18 @@ Content-Type: application/json
     "username" : "Noah1",
     "password" : "sr19960309"
 }
+
+###
+POST http://localhost:4000/auth
+Content-Type: application/json
+
+{
+    "username" : "Noah1",
+    "password" : "sr19960309"
+}
+
+###
+GET http://localhost:4000/logout
+
+###
+GET http://localhost:4000/refresh

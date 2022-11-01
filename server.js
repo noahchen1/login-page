@@ -4,12 +4,13 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const jwt = require('jsonwebtoken')
+const cookieParser = require('cookie-parser')
+
 const port = process.env.PORT || 4000;
 const URI = process.env.ATLAS_URI;
 
-
-
 app.use(express.json());
+app.use(cookieParser());
 
 connectDB();
 
@@ -27,7 +28,6 @@ const posts = [
 let refreshTokens = [];
 
 app.get('/users', authenticateToken, (req, res) => {
-    console.log(req.user)
     res.json(posts.filter(post => post.username === req.user.name))
 })
 
@@ -60,7 +60,12 @@ app.delete('/logout', (req, res) => {
     res.sendStatus(204)
 })
 
+/////////////////////////////////////////////////////
+
 app.use('/register', require('./routes/register'));
+app.use('/auth', require('./routes/auth'));
+app.use('/logout', require('./routes/logout'));
+app.use('/refresh', require('./routes/refreshToken'));
 
 function authenticateToken(req, res, next) {
     const authHeader = req.headers['authorization'];
