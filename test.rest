@@ -1,0 +1,27 @@
+GET http://localhost:4000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTm9haCIsImlhdCI6MTY2NzI0OTY1MSwiZXhwIjoxNjY3MjQ5NjY2fQ.5DFqk5oi5Ix15Es-3DdvbY-0lg7nwGIWRzNd76ejI-o
+
+###
+POST http://localhost:4000/login
+Content-Type: application/json
+
+{
+    "username": "Noah"
+}
+
+###
+POST http://localhost:4000/token 
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTm9haCIsImlhdCI6MTY2NzI0OTgxM30.j9gsbWTWNcl981PUBHufEvEMBSlXx6RRwHhcc_PUJos"
+}
+
+###
+POST http://localhost:4000/register
+Content-Type: application/json
+
+{
+    "username" : "Noah1",
+    "password" : "sr19960309"
+}
