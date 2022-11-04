@@ -5,12 +5,16 @@ const mongoose = require('mongoose');
 const app = express();
 const jwt = require('jsonwebtoken')
 const cookieParser = require('cookie-parser')
+const allowedOrigins = require('./config/allowedOrigins');
+const cors = require('cors');
 
 const port = process.env.PORT || 4000;
 const URI = process.env.ATLAS_URI;
 
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors(allowedOrigins));
+
 
 connectDB();
 
