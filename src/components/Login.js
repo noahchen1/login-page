@@ -1,11 +1,17 @@
 import axios from 'axios';
-import { useRef, useState, useEffect, useContext } from 'react'
+import { useRef, useState, useEffect, useContext } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import AuthContext from '../context/AuthProvider';
 
 const LOGIN_URL = 'http://localhost:4000/auth';
 
 const Login = () => {
     const { setAuth } = useContext(AuthContext);
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+
     const userRef = useRef();
     const errRef = useRef();
 
@@ -39,7 +45,8 @@ const Login = () => {
             setAuth({ user, pwd, roles, accessToken })
             setUser('')
             setPwd('')
-            setSuccess(true)
+            setSuccess(true);
+            navigate(from, { replace: true });
         })
         .catch(err => {
             if (!err?.response) {
