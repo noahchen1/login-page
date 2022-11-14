@@ -40,11 +40,10 @@ const Login = () => {
         .then(res => {
             const accessToken = res?.data?.accessToken;
             const roles = res?.data.roles;
-            console.log(accessToken)
-            console.log(roles)
-            setAuth({ user, pwd, roles, accessToken })
-            setUser('')
-            setPwd('')
+
+            setAuth({ user, pwd, roles, accessToken });
+            setUser('');
+            setPwd('');
             setSuccess(true);
             navigate(from, { replace: true });
         })
